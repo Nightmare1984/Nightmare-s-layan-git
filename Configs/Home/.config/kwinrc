@@ -13,24 +13,9 @@ Id_2=459315d0-9437-4fde-9640-295bbc95ff31
 Number=2
 Rows=1
 
-[Effect-PresentWindows]
-BorderActivateAll=9
-
-[Effect-Wobbly]
-Drag=97
-MoveFactor=25
-Stiffness=1
-WobblynessLevel=4
-
 [Effect-blur]
 BlurStrength=11
 NoiseStrength=6
-
-[Effect-overview]
-LayoutMode=0
-
-[Effect-presentwindows]
-BorderActivateAll=9
 
 [Effect-wobblywindows]
 Drag=85
