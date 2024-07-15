@@ -9,7 +9,7 @@ echo "#############################"
 echo
 echo "Native Packages..."
 echo
-sudo pacman -S --noconfirm --needed kvantum jq xmlstarlet fastfetch gtk-engine-murrine gtk-engines ttf-hack-nerd ttf-fira-code kdeconnect ttf-terminus-nerd noto-fonts-emoji ttf-meslo-nerd kde-wallpapers
+sudo pacman -S --noconfirm --needed kvantum unzip jq xmlstarlet fastfetch gtk-engine-murrine gtk-engines ttf-hack-nerd ttf-fira-code kdeconnect ttf-terminus-nerd noto-fonts-emoji ttf-meslo-nerd kde-wallpapers
 echo
 echo "AUR Packages..."
 echo
@@ -24,7 +24,7 @@ else
     exit 1
 fi
 # Install packages using the detected AUR helper
-$aur_helper -S --noconfirm --needed aur/ttf-meslo-nerd-font-powerlevel10k
+$aur_helper -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k oh-my-posh-bin
 sleep 2
 echo
 echo "Creating Backup & Applying new Rice, hold on..."
@@ -32,6 +32,62 @@ echo "###############################################"
 cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -Rf Configs/Home/. ~
 sudo cp -Rf Configs/System/. / && sudo cp -Rf Configs/Home/. /root/
 sleep 2
+echo
+echo "Adding Fastfetch to your shell configuration"
+echo
+
+# Function to add fastfetch to a shell configuration file
+add_fastfetch() {
+  local shell_rc="$1"
+
+  if ! grep -Fxq 'fastfetch' "$HOME/$shell_rc"; then
+    echo '' >> "$HOME/$shell_rc"
+    echo 'fastfetch' >> "$HOME/$shell_rc"
+    echo
+    echo "fastfetch has been added to your $shell_rc and will run on Terminal launch."
+  else
+    echo "fastfetch is already set to run on Terminal launch in $shell_rc."
+  fi
+}
+
+# Detect the current shell
+current_shell=$(basename "$SHELL")
+
+# Prompt the user
+read -p "Do you want to enable fastfetch to run on Terminal launch? (y/n): " response
+
+case "$response" in
+  [yY])
+    if [ "$current_shell" = "zsh" ]; then
+      add_fastfetch ".zshrc"
+    elif [ "$current_shell" = "bash" ]; then
+      add_fastfetch ".bashrc"
+    else
+      echo "Unsupported shell: $current_shell"
+    fi
+    ;;
+  [nN])
+    echo "fastfetch will not be added to your shell configuration."
+    ;;
+  *)
+    echo "Invalid response. Please enter y or n."
+    ;;
+esac
+sleep 2
+echo
+echo "Applying OhMy-Posh to Bash"
+echo
+# Check if the folder exists, if not create it and download the file
+if [ ! -d "$HOME/.config/ohmyposh" ]; then
+  mkdir -p "$HOME/.config/ohmyposh"
+fi
+curl -o "$HOME/.config/ohmyposh/tokyonight_storm.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/tokyonight_storm.omp.json
+sleep 2
+# Check if the line exists in ~/.bashrc, if not add it
+if ! grep -Fxq 'eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/tokyonight_storm.omp.json)"' "$HOME/.bashrc"; then
+  echo '' >> "$HOME/.bashrc"
+  echo 'eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/tokyonight_storm.omp.json)"' >> "$HOME/.bashrc"
+fi
 echo
 echo "Applying Grub Theme...."
 echo "#######################"
@@ -58,10 +114,7 @@ echo "####################"
 cd ~ && git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme/
 sudo chmod +x install.sh && sh install.sh -c purple
 sleep 2
-echo "clear && neofetch" >> ~/.bashrc
 rm -rf ~/xero-layan-git/ ~/Tela-circle-icon-theme/
 echo
-if [ -f ~/.bashrc ]; then sed -i 's/neofetch/fastfetch/g' ~/.bashrc; fi
-if [ -f ~/.zshrc ]; then sed -i 's/neofetch/fastfetch/g' ~/.zshrc; fi
 echo "Plz Reboot To Apply Settings..."
 echo "###############################"

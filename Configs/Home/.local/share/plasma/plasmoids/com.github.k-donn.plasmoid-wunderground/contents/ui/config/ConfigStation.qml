@@ -17,7 +17,6 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
 import org.kde.kcmutils as KCM
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami
@@ -31,7 +30,9 @@ KCM.SimpleKCM {
     property alias cfg_refreshPeriod: refreshPeriod.value
 
     function printDebug(msg) {
-        if (plasmoid.configuration.logConsole) {console.log("[debug] [ConfigStation.qml] " + msg)}
+        if (plasmoid.configuration.logConsole) {
+            console.log("[debug] [ConfigStation.qml] " + msg);
+        }
     }
 
     Kirigami.FormLayout {
@@ -95,8 +96,7 @@ KCM.SimpleKCM {
         }
 
         PlasmaComponents.Label {
-            text: "Version 0.1.0"
+            text: "Version 3.0.0"
         }
     }
-
 }

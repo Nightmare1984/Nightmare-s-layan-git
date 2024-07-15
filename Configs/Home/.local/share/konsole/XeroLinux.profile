@@ -11,7 +11,7 @@ Name=XeroLinux
 Parent=FALLBACK/
 StartInCurrentSessionDir=true
 TerminalColumns=110
-TerminalRows=28
+TerminalRows=29
 
 [Interaction Options]
 AutoCopySelectedText=true

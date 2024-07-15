@@ -208,10 +208,6 @@ latitude=33.863663
 longitude=35.597227
 stationID=IMATND12
 
-[Containments][126][Applets][226]
-immutability=1
-plugin=com.github.boraerciyas.controlcentre
-
 [Containments][126][Applets][226][Configuration]
 PreloadWeight=85
 popupHeight=360
@@ -425,11 +421,6 @@ sortByRepo=true
 [Containments][132][Applets][223][Configuration][ConfigDialog]
 DialogHeight=540
 DialogWidth=720
-
-[Containments][132][Applets][223][Configuration][General]
-archNews=true
-checkOnStartup=true
-plasmoids=true
 
 [Containments][132][Applets][238][Configuration][Upgrade]
 refreshShell=true
