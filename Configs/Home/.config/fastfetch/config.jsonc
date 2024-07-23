@@ -24,6 +24,7 @@
         {
             "type": "cpu",
             "key": "│ ├",
+            "showPeCoreCount": true,
             "keyColor": "green"
         },
         {
@@ -97,8 +98,9 @@
             "keyColor": "blue"
         },
         {
-            "type": "terminal",
-            "key": "└ └",
+            "type": "gpu",
+            "key": "└ └󰍛",
+            "format": "{3}",
             "keyColor": "blue"
         },
         {
