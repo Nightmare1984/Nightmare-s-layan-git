@@ -1,4 +1,4 @@
-# This is XeroLinux's Layan Rice
+# This is Nightmare's Layan Rice
 
 ### Disclaimer
 
