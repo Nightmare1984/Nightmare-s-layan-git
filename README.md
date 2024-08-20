@@ -16,7 +16,7 @@ This rice has been throughly optimized for best performance on higher-end system
 
 ```Bash
 git clone https://github.com/Nightmare1984/Nightmares-layan-git
-cd xero-layan-git/ && ./install.sh
+cd Nightmares-layan-git/ && ./install.sh
 ```
 
 ### Your Settings
