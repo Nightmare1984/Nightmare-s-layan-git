@@ -15,7 +15,7 @@ This rice has been throughly optimized for best performance on higher-end system
 **Install At Own Risk!!!**. As of now it supports **Plasma 6.x.x**. If you notice any issues and report them via issue tracker on here and I will do my best to address them. To apply the rice, please follow the commands posted below. You will need either **Paru** or **Yay** (installed via my toolkit). Keep in mind that this will replace some files. Read below...
 
 ```Bash
-git clone https://github.com/xerolinux/xero-layan-git
+git clone https://github.com/Nightmare1984/Nightmares-layan-git
 cd xero-layan-git/ && ./install.sh
 ```
 
